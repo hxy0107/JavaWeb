@@ -27,7 +27,7 @@
   <input type="submit" value="提交">
 </form>
 <form action="search_app_pac.jsp" method="get">
-    搜索应用名:<input type="text" name="search_app_pac">
+    搜索应用包名:<input type="text" name="search_app_pac">
     <input type="submit" value="提交">
 </form>
 <form action="search_app_msp.jsp" method="get">
