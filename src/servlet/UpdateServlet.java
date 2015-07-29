@@ -58,5 +58,6 @@ public class UpdateServlet extends HttpServlet {
                 }
             }
         }).start();
+        response.sendRedirect("/index.jsp");
     }
 }

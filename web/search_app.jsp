@@ -27,7 +27,7 @@
   <input type="submit" value="提交">
 </form>
 <form action="search_app_pac.jsp" method="get">
-    搜索应用包名:<input type="text" name="search_app_pac">
+    搜索应用名:<input type="text" name="search_app_pac">
     <input type="submit" value="提交">
 </form>
 <form action="search_app_msp.jsp" method="get">
@@ -52,7 +52,9 @@
     <th>APP_MD5</th>
     <th>APP_ID</th>
     <th>APP_SIZE</th>
-    <th>ALIPAY_SDK_VERSION</th>
+    <th>MSP_VERSION</th>
+    <th>DECODE_APP</th>
+    <th>HAS_SDK</th>
     <th>APP_URL</th>
   </tr>
   <c:forEach var="row" items="${result.rows}">
@@ -66,6 +68,8 @@
       <td><c:out value="${row.app_id}"/></td>
       <td><c:out value="${row.app_size}"/></td>
       <td><c:out value="${row.sdk_version}"/></td>
+      <td><c:out value="${row.decode_app}"/></td>
+      <td><c:out value="${row.has_sdk}"/></td>
       <td><a href="${row.app_url}"><c:out value="${row.app_url}"/></a></td>
     </tr>
   </c:forEach>

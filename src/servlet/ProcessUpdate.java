@@ -1,5 +1,6 @@
 package servlet;
 
+import automation.AutoProcess;
 import automation.AutoUpdate;
 
 import javax.servlet.ServletException;
@@ -48,7 +49,7 @@ public class ProcessUpdate extends HttpServlet {
             public void run() {
 
 
-                int result= AutoUpdate.main(s);
+                int result= AutoProcess.main(s);
                 if(result==0){
                     System.out.println("当前版本应用是最新");
                     out.println("<h1>" + "The current version is already up to date" + "</h1>");
@@ -57,5 +58,6 @@ public class ProcessUpdate extends HttpServlet {
                 }
             }
         }).start();
+        response.sendRedirect("/search_app.jsp");
     }
 }

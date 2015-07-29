@@ -18,6 +18,8 @@
   <%!
       public  String get;
       public  String search_opt ;
+      public  String get_app;
+      public String search_opt_app;
   %>
 </head>
 <body>
@@ -40,6 +42,12 @@
     get=request.getParameter("search_app_name");
   if(get!=null){
     search_opt= URLDecoder.decode(get,"utf-8");}
+%>
+<%
+  request.setCharacterEncoding("GBK");
+  get_app=request.getParameter("search_app");
+  if(get_app!=null){
+    search_opt_app= URLDecoder.decode(get_app,"utf-8");}
 %>
 
 <sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
@@ -69,7 +77,9 @@
     <th>APP_MD5</th>
     <th>APP_ID</th>
     <th>APP_SIZE</th>
-    <th>ALIPAY_SDK_VERSION</th>
+    <th>MSP_VERSION</th>
+    <th>DECODE_APP</th>
+    <th>HAS_SDK</th>
     <th>APP_URL</th>
   </tr>
   <c:forEach var="row" items="${search_sql.rows}">
@@ -83,6 +93,8 @@
       <td><c:out value="${row.app_id}"/></td>
       <td><c:out value="${row.app_size}"/></td>
       <td><c:out value="${row.sdk_version}"/></td>
+      <td><c:out value="${row.decode_app}"/></td>
+      <td><c:out value="${row.has_sdk}"/></td>
       <td><a href="${row.app_url}"><c:out value="${row.app_url}"/></a></td>
     </tr>
   </c:forEach>
