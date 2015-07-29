@@ -29,7 +29,7 @@
 </form><br/>
 <form action="index_pac.jsp" method="get">
   搜索应用包名:<input type="text" name="search_app_index_pac">
-  <input type="submit" value="提交">
+  输入包名: <input type="submit" value="提交">
 </form>
 <%
   get=request.getParameter("search_app_index_pac");
@@ -41,7 +41,7 @@
                    user="root"  password="1"/>
 
 <sql:query dataSource="${snapshot}" var="result" >
-  SELECT * from app_info.`pack_only_copy_7.22`;
+  SELECT * from app_info.`msp_table_copy_7.27_copy`;
 </sql:query>
 
 <c:set var="empId" scope="application" value="<%=get%>" >
@@ -49,7 +49,7 @@
 </c:set>
 
 <sql:query var="search_sql" dataSource="${snapshot}">
-  SELECT * FROM app_info.`msp_table_copy` WHERE package_name=?;
+  SELECT * FROM app_info.`msp_table_copy_7.27_copy` WHERE package_name=?;
   <sql:param value="${empId}" />
 </sql:query>
 

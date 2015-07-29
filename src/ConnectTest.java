@@ -35,6 +35,9 @@ public class ConnectTest {
         }while(rs.next());
         con.close();
     }
+    public static void test(){
+        System.out.println("ConnectTest is Done.");
+    }
 
 
 

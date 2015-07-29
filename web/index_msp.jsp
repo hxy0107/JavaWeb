@@ -27,13 +27,23 @@
 <form action="search_app.jsp" method="get">
   <input type="submit" value="回到应用列表首页">
 </form><br/>
-<form action="search_app_name.jsp" method="get">
-  搜索应用MSP:<input type="text" name="search_app_index_msp">
+<form action="index_msp.jsp" method="get">
+  搜索应用MSP:
+  <select name="select">
+    <option  value="9.1.0">9.1.0</option>
+    <option  value="9.1.5">9.1.5</option>
+    <option  value="9.1.8">9.1.8</option>
+    <option  value="9.2.1">9.2.1</option>
+    <option  value="NULL">NULL</option>
+    <option  value="not found">999</option>
+  </select>
   <input type="submit" value="提交">
 </form>
 <%
-  get=request.getParameter("search_app_index_msp");
-  search_opt= URLDecoder.decode(get,"utf-8");
+  get=request.getParameter("select");
+  if(get!=null) {
+    search_opt = URLDecoder.decode(get, "utf-8");
+  }
 %>
 
 <sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
@@ -41,7 +51,7 @@
                    user="root"  password="1"/>
 
 <sql:query dataSource="${snapshot}" var="result" >
-  SELECT * from app_info.`pack_only_copy_7.22`;
+  SELECT * from app_info.`msp_table_copy_7.27_copy`;
 </sql:query>
 
 <c:set var="empId" scope="application" value="<%=get%>" >
@@ -49,7 +59,7 @@
 </c:set>
 
 <sql:query var="search_sql" dataSource="${snapshot}">
-  SELECT * FROM app_info.`msp_table_copy` WHERE  msp_version=?;
+  SELECT * FROM app_info.`msp_table_copy_7.27_copy` WHERE  msp_version=?;
   <sql:param value="${empId}" />
 </sql:query>
 

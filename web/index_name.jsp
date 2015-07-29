@@ -31,6 +31,10 @@
   搜索应用名:<input type="text" name="search_app_index_name">
   <input type="submit" value="提交">
 </form>
+<form  action="UpdateServlet" method="get" >
+ 输入包名: <input type="text" name="search_app_index_name_servlet">
+  <input type="submit" value="检查应用更新">
+</form>
 <%
   request.setCharacterEncoding("GBK");
   get=request.getParameter("search_app_index_name");
@@ -42,7 +46,7 @@
                    user="root"  password="1"/>
 
 <sql:query dataSource="${snapshot}" var="result" >
-  SELECT * from app_info.`msp_table_copy`;
+  SELECT * from app_info.`msp_table_copy_7.27_copy`;
 </sql:query>
 
 <c:set var="empId" scope="page" value="<%=search_opt%>" >
@@ -50,7 +54,7 @@
 </c:set>
 
 <sql:query var="search_sql" dataSource="${snapshot}">
-  SELECT * FROM app_info.`msp_table_copy` WHERE app_name=?;
+  SELECT * FROM app_info.`msp_table_copy_7.27_copy` WHERE app_name=?;
   <sql:param value="${empId}" />
 </sql:query>
 

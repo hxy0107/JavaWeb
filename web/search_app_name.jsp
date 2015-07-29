@@ -31,10 +31,15 @@
   搜索应用:<input type="text" name="search_app">
   <input type="submit" value="提交">
 </form>
+<form  action="ProcessUpdate" method="get" >
+  输入未找到应用名:<input type="text" name="index_name_servlet">
+  <input type="submit" value="新增未查找到的应用">
+</form>
 <%
     request.setCharacterEncoding("GBK");
     get=request.getParameter("search_app_name");
-    search_opt= URLDecoder.decode(get,"utf-8");
+  if(get!=null){
+    search_opt= URLDecoder.decode(get,"utf-8");}
 %>
 
 <sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"

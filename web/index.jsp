@@ -39,7 +39,7 @@
                    user="root"  password="1"/>
 
 <sql:query dataSource="${snapshot}" var="result">
-  SELECT * from app_info.`msp_table_copy`;
+  SELECT * from app_info.`msp_table_copy_7.27_copy`;
 </sql:query>
 
 <table border="1" width="100%">
