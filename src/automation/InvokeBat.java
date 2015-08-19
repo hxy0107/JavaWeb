@@ -13,7 +13,7 @@ public class InvokeBat {
             InputStream in=ps.getInputStream();
             int c;
             while ((c=in.read())!=-1){
-                System.out.println(c);
+              //  System.out.println(c);
             }
             in.close();
             ps.waitFor();
@@ -30,7 +30,7 @@ public class InvokeBat {
             InputStream in=ps.getInputStream();
             int c;
             while ((c=in.read())!=-1){
-                System.out.println(c);
+              //  System.out.println(c);
             }
             in.close();
             ps.waitFor();
@@ -46,10 +46,10 @@ public class InvokeBat {
         Runtime run = Runtime.getRuntime();
         try {
             Process process = run.exec("cmd.exe /k start " + path);
-            //½«µ÷ÓÃ½á¹û´òÓ¡µ½¿ØÖÆÌ¨ÉÏ
+            //ï¿½ï¿½ï¿½ï¿½ï¿½Ã½ï¿½ï¿½ï¿½ï¿½Ó¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¨ï¿½ï¿½
             InputStream in = process.getInputStream();
             while (in.read() != -1) {
-                System.out.println(in.read());
+              //  System.out.println(in.read());
             }
             in.close();
             process.waitFor();

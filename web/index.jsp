@@ -34,12 +34,20 @@
   搜索应用MSP :<input type="text" name="search_app_index_msp">
   <input type="submit" value="提交">
 </form>
+<form  action="TableUpdateServlet" method="get" >
+  更新MSP列表: <input type="text" name="tableupdate_servlet">
+  <input type="submit" value="更新MSP列表">
+</form>
+<form  action="KeywordUpdateServlet" method="get" >
+  输入搜索关键词: <input type="text" name="alimsp_servlet">
+  <input type="submit" value="根据关键词检索更新">
+</form>
 <sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
                    url="jdbc:mysql://localhost/app_info"
                    user="root"  password="1"/>
 
 <sql:query dataSource="${snapshot}" var="result">
-  SELECT * from app_info.`msp_table_copy_7.27_copy`;
+  SELECT * from app_info.`msp_table_8.12_copy`;
 </sql:query>
 
 <table border="1" width="100%">
@@ -48,10 +56,11 @@
     <th>ICON</th>
     <th>PACKAGE_NAME</th>
     <th>APP_NAME</th>
-    <th>APP_VERSION</th>
     <th>APP_VERSIONCODE</th>
-    <th>APP_SIZE</th>
+    <th>DECODE</th>
+    <th>HAS_ALI_SDK</th>
     <th>MSP_VERSION</th>
+    <th>MSP_PRO</th>
     <th>APP_URL</th>
   </tr>
   <c:forEach var="row" items="${result.rows}">
@@ -60,10 +69,11 @@
       <td><img src="${row.app_icon}"  class="icon" width="68" height="68"/><c:out value="${row.icon}"/></td>
       <td><c:out value="${row.package_name}"/></td>
       <td><c:out value="${row.app_name}"/></td>
-      <td><c:out value="${row.app_version}"/></td>
       <td><c:out value="${row.app_versioncode}"/></td>
-      <td><c:out value="${row.app_size}"/></td>
+      <td><c:out value="${row.decode_app}"/></td>
+      <td><c:out value="${row.has_sdk}"/></td>
       <td><c:out value="${row.msp_version}"/></td>
+      <td><c:out value="${row.msp_pro}"/></td>
       <td><a href="${row.app_url}"><c:out value="${row.app_url}"/></a></td>
     </tr>
   </c:forEach>

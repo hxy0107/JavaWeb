@@ -54,7 +54,7 @@
 </c:set>
 
 <sql:query var="search_sql" dataSource="${snapshot}">
-  SELECT * FROM app_info.`msp_table_copy_7.27_copy` WHERE app_name=?;
+  SELECT * FROM app_info.`msp_table_8.12_copy` WHERE app_name=?;
   <sql:param value="${empId}" />
 </sql:query>
 
@@ -64,10 +64,11 @@
     <th>ICON</th>
     <th>PACKAGE_NAME</th>
     <th>APP_NAME</th>
-    <th>APP_VERSION</th>
     <th>APP_VERSIONCODE</th>
-    <th>APP_SIZE</th>
+    <th>DECODE</th>
+    <th>HAS_ALI_SDK</th>
     <th>MSP_VERSION</th>
+    <th>MSP_PRO</th>
     <th>APP_URL</th>
   </tr>
   <c:forEach var="row" items="${search_sql.rows}">
@@ -76,10 +77,11 @@
       <td><img src="${row.app_icon}"  class="icon" width="68" height="68"/><c:out value="${row.icon}"/></td>
       <td><c:out value="${row.package_name}"/></td>
       <td><c:out value="${row.app_name}"/></td>
-      <td><c:out value="${row.app_version}"/></td>
       <td><c:out value="${row.app_versioncode}"/></td>
-      <td><c:out value="${row.app_size}"/></td>
+      <td><c:out value="${row.decode_app}"/></td>
+      <td><c:out value="${row.has_sdk}"/></td>
       <td><c:out value="${row.msp_version}"/></td>
+      <td><c:out value="${row.msp_pro}"/></td>
       <td><a href="${row.app_url}"><c:out value="${row.app_url}"/></a></td>
     </tr>
   </c:forEach>
